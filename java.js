@@ -19,6 +19,7 @@ function createGrid(gridSize){
      }
   
     const gridHover = document.querySelectorAll('.gridPiece')
+  
 gridHover.forEach (gridHov => gridHov.addEventListener('mouseover', gridHoverTransition))
 
 }
@@ -39,11 +40,46 @@ function gridChangeSize() {
     
 }
 
-function gridHoverTransition(e) {
+
+function gridHoverTransition() {
+    const colorSelect = document.querySelector('#colorChoice')
+    let alpha = .1
+    if (colorSelect.value == "Darker") {
+        // console.log(this.style['background-color'][3])
+        // console.log(this.style['background-color'])
+        if(!this.style['background-color']){
+            this.style['background-color'] = `rgba(50,160,176,${alpha})`
+        }
+        
+        else if ((this.style['background-color'][3] == "a"))
+        {
+            let tempAlpha = this.style['background-color']
+            alpha = Number(tempAlpha.slice(-3,-1)) + .1
+            // console.log(tempAlpha.split(","))
+            tempAlpha= tempAlpha.split(",")
+            let RedC = tempAlpha[0].slice(5)
+            let GreenC = tempAlpha[1]
+            let BlueC = tempAlpha[2]
+            // console.log(RedC,GreenC, BlueC)
+            
+            // console.log(alpha)
+            // console.log("what")
+            this.style['background-color'] = `rgba(${RedC},${GreenC},${BlueC},${alpha})`
+        }
+        
+    }
+    if (colorSelect.value == "Single Color") {
+        this.style['background-color'] = `rgb(50,160,176)`
+    }
+    
+    else if (colorSelect.value== "Random Colors")
+    {
     let redC = Math.floor(Math.random()*255)
     let greenC = Math.floor(Math.random()*255)
     let blueC = Math.floor(Math.random()*255)
-    this.style['background-color'] = `rgb(${redC}, ${greenC}, ${blueC})`
+    let alphaC = Math.floor(Math.random()*10)/10
+    this.style['background-color'] = `rgba(${redC}, ${greenC}, ${blueC}, ${alphaC})`
+    }
 }
 
 const gridChoiceoption = document.querySelector('#changeGrid')

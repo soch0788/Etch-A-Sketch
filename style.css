@@ -10,7 +10,7 @@
 
 .gridPiece {
     height: 100%;
-    transition: all 5.5s ease;
+    transition: all .1s ease;
     /* background-color: purple; */
     /* border: black solid .1px; */
 
