@@ -50,6 +50,7 @@ function gridHoverTransition() {
         if(!this.style['background-color']){
             this.style['background-color'] = `rgba(50,160,176,${alpha})`
         }
+    
         
         else if ((this.style['background-color'][3] == "a"))
         {
@@ -68,8 +69,27 @@ function gridHoverTransition() {
         }
         
     }
-    if (colorSelect.value == "Single Color") {
-        this.style['background-color'] = `rgb(50,160,176)`
+    else if (colorSelect.value == "Lighter") {
+        
+        if(!this.style['background-color']){
+            this.style['background-color'] = `rgba(50,160,176,${alpha})`
+        }
+        else if ((this.style['background-color'][3] == "a"))
+        {
+            let tempAlpha = this.style['background-color']
+            alpha = Number(tempAlpha.slice(-3,-1)) - .1
+            
+            tempAlpha= tempAlpha.split(",")
+            let RedC = tempAlpha[0].slice(5)
+            let GreenC = tempAlpha[1]
+            let BlueC = tempAlpha[2]
+            // console.log(RedC, GreenC, BlueC, alpha)
+            this.style['background-color'] = `rgba(${RedC},${GreenC},${BlueC},${alpha})`
+        }
+        
+    }
+    else if (colorSelect.value == "Single Color") {
+        this.style['background-color'] = `rgba(50,160,176,.5)`
     }
     
     else if (colorSelect.value== "Random Colors")
@@ -79,6 +99,9 @@ function gridHoverTransition() {
     let blueC = Math.floor(Math.random()*255)
     let alphaC = Math.floor(Math.random()*10)/10
     this.style['background-color'] = `rgba(${redC}, ${greenC}, ${blueC}, ${alphaC})`
+    }
+    else if (colorSelect.value == "Eraser"){
+        this.style['background-color'] = `rgb(255,255,255)`
     }
 }
 
