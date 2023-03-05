@@ -97,15 +97,15 @@ function gridHoverTransition(e) {
         }
         else 
         {
-            console.log("im here")
+            // console.log("im here")
             let tempAlpha = this.style['background-color']
             alpha = .9            
             tempAlpha= tempAlpha.split(",")
             let RedC = tempAlpha[0].slice(4)
             let GreenC = tempAlpha[1]
             let BlueC = tempAlpha[2].slice(0,-1)
-            console.log(tempAlpha)
-            console.log(RedC,GreenC,BlueC)
+            // console.log(tempAlpha)
+            // console.log(RedC,GreenC,BlueC)
             this.style['background-color'] = `rgba(${RedC},${GreenC},${BlueC},${alpha})`
         }
         
