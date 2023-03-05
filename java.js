@@ -21,7 +21,7 @@ function createGrid(gridSize){
     const gridHover = document.querySelectorAll('.gridPiece')
   
 gridHover.forEach (gridHov => gridHov.addEventListener('mouseover', gridHoverTransition))
-
+gridHover.forEach (gridHov => gridHov.addEventListener('mousedown', gridHoverTransition))
 }
 
 function gridSizer() {
@@ -45,9 +45,13 @@ function gridChangeSize() {
 }
 
 
-function gridHoverTransition() {
+function gridHoverTransition(e) {
+    this.classList.add("targeted")
     const colorSelect = document.querySelector('#colorChoice')
     let alpha = .1
+    let gridClicker = document.querySelector('.targeted')
+    if (e.buttons>0)
+    {
     if (colorSelect.value == "Darker") {
         // console.log(this.style['background-color'][3])
         // console.log(this.style['background-color'])
@@ -84,6 +88,7 @@ function gridHoverTransition() {
             alpha = Number(tempAlpha.slice(-3,-1)) - .1
             
             tempAlpha= tempAlpha.split(",")
+            // console.log(tempAlpha)
             let RedC = tempAlpha[0].slice(5)
             let GreenC = tempAlpha[1]
             let BlueC = tempAlpha[2]
@@ -92,14 +97,15 @@ function gridHoverTransition() {
         }
         else 
         {
-            // console.log("im here")
+            console.log("im here")
             let tempAlpha = this.style['background-color']
             alpha = .9            
             tempAlpha= tempAlpha.split(",")
-            let RedC = tempAlpha[0].slice(5)
+            let RedC = tempAlpha[0].slice(4)
             let GreenC = tempAlpha[1]
-            let BlueC = tempAlpha[2].slice(0,-2)
-            // console.log(RedC, GreenC, BlueC, alpha)
+            let BlueC = tempAlpha[2].slice(0,-1)
+            console.log(tempAlpha)
+            console.log(RedC,GreenC,BlueC)
             this.style['background-color'] = `rgba(${RedC},${GreenC},${BlueC},${alpha})`
         }
         
@@ -118,7 +124,7 @@ function gridHoverTransition() {
     }
     else if (colorSelect.value == "Eraser"){
         this.style['background-color'] = `rgb(255,255,255)`
-    }
+    }}
 }
 
 const gridChoiceoption = document.querySelector('#changeGrid')
