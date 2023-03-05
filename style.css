@@ -1,9 +1,27 @@
+body{
+display: flex;
+flex-direction: column;
+align-items: center;
+background-color: lightcyan;
+}
+.options {
+    width: min(85vw, 85vh);
+    display: flex;
+    justify-content: left;
+    flex-direction: row;
+    
+}
+
+.options>* {
+    margin: .5rem;
+}
 #grid {
-    height: min(75vh, 75vw);
-    width: min(75vw, 75vh);
+    height: min(85vh, 85vw);
+    width: min(85vw, 85vh);
     display: flex;
     flex-wrap: nowrap;
     border: lightblue solid;
+    background-color: white;
     /* justify-content: stretch; */
     /* align-items: stretch; */
 }

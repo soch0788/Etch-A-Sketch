@@ -29,8 +29,12 @@ function gridSizer() {
     for(let i=1; i<101; i++) {
         let gridChocie = document.createElement('option')
         gridChocie.value=`${i}`
-        gridChocie.textContent=`${i}`
+        gridChocie.textContent=`${i}` 
+        if(i==16){
+            gridChocie.selected = 'True'
+        }
         gridChooser.appendChild(gridChocie)
+       
     }
 }
 
@@ -48,14 +52,14 @@ function gridHoverTransition() {
         // console.log(this.style['background-color'][3])
         // console.log(this.style['background-color'])
         if(!this.style['background-color']){
-            this.style['background-color'] = `rgba(50,160,176,${alpha})`
+            this.style['background-color'] = `rgba(160,160,160,${alpha})`
         }
     
         
         else if ((this.style['background-color'][3] == "a"))
         {
             let tempAlpha = this.style['background-color']
-            alpha = Number(tempAlpha.slice(-3,-1)) + .1
+            alpha = Number(tempAlpha.slice(-3,-1)) + .2
             // console.log(tempAlpha.split(","))
             tempAlpha= tempAlpha.split(",")
             let RedC = tempAlpha[0].slice(5)
@@ -70,9 +74,9 @@ function gridHoverTransition() {
         
     }
     else if (colorSelect.value == "Lighter") {
-        
+        // console.log(this.style['background-color'])
         if(!this.style['background-color']){
-            this.style['background-color'] = `rgba(50,160,176,${alpha})`
+            this.style['background-color'] = `rgba(160,160,160,${alpha})`
         }
         else if ((this.style['background-color'][3] == "a"))
         {
@@ -86,10 +90,22 @@ function gridHoverTransition() {
             // console.log(RedC, GreenC, BlueC, alpha)
             this.style['background-color'] = `rgba(${RedC},${GreenC},${BlueC},${alpha})`
         }
+        else 
+        {
+            // console.log("im here")
+            let tempAlpha = this.style['background-color']
+            alpha = .9            
+            tempAlpha= tempAlpha.split(",")
+            let RedC = tempAlpha[0].slice(5)
+            let GreenC = tempAlpha[1]
+            let BlueC = tempAlpha[2].slice(0,-2)
+            // console.log(RedC, GreenC, BlueC, alpha)
+            this.style['background-color'] = `rgba(${RedC},${GreenC},${BlueC},${alpha})`
+        }
         
     }
     else if (colorSelect.value == "Single Color") {
-        this.style['background-color'] = `rgba(50,160,176,.5)`
+        this.style['background-color'] = `rgba(160,160,160,.5)`
     }
     
     else if (colorSelect.value== "Random Colors")
@@ -97,7 +113,7 @@ function gridHoverTransition() {
     let redC = Math.floor(Math.random()*255)
     let greenC = Math.floor(Math.random()*255)
     let blueC = Math.floor(Math.random()*255)
-    let alphaC = Math.floor(Math.random()*10)/10
+    let alphaC = Math.floor(Math.random()*5)/10+.5
     this.style['background-color'] = `rgba(${redC}, ${greenC}, ${blueC}, ${alphaC})`
     }
     else if (colorSelect.value == "Eraser"){
@@ -106,6 +122,8 @@ function gridHoverTransition() {
 }
 
 const gridChoiceoption = document.querySelector('#changeGrid')
+const gridReset = document.querySelector('#Reset')
+gridReset.addEventListener('click', gridChangeSize)
 gridChoiceoption.addEventListener('click', gridChangeSize)
 gridSizer()
 let gridSize = 16
