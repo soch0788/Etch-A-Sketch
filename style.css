@@ -11,6 +11,10 @@ background-color: lightcyan;
     flex-direction: row;
     
 }
+h3 {
+    font-size:72px;
+    margin: 0;
+}
 
 .options>* {
     margin: .5rem;

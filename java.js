@@ -113,6 +113,9 @@ function gridHoverTransition(e) {
     else if (colorSelect.value == "Single Color") {
         this.style['background-color'] = `rgba(160,160,160,.5)`
     }
+    else if (colorSelect.value == "Red") {
+        this.style['background-color'] = `rgba(255,50,50,.5)`
+    }
     
     else if (colorSelect.value== "Random Colors")
     {
