@@ -110,11 +110,13 @@ function gridHoverTransition(e) {
         }
         
     }
-    else if (colorSelect.value == "Single Color") {
-        this.style['background-color'] = `rgba(160,160,160,.5)`
+    else if (colorSelect.value == "Black") {
+        this.style['background-color'] = `rgba(0,0,0,1)`
     }
-    else if (colorSelect.value == "Red") {
-        this.style['background-color'] = `rgba(255,50,50,.5)`
+    else if (colorSelect.value == "Color Picker") {
+        
+        let colorPick = document.querySelector("#colorWheel")
+        this.style['background-color'] = colorPick.value
     }
     
     else if (colorSelect.value== "Random Colors")
